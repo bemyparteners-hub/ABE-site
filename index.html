@@ -1,3 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABE - Aide & Bien ÃŠtre | Services Ã  domicile</title>
+  <meta name="description" content="ABE - Aide & Bien ÃŠtre, votre service d'aide Ã  domicile Ã  VÃ©nissieux et Saint-Fons. MÃ©nage, aide Ã  la personne, prÃ©sence et vie sociale." />
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #bdcd10;
+      --primary-dark: #a0af0c;
+      --primary-light: #d8e84a;
+      --secondary: #16a0d7;
+      --secondary-dark: #1180ad;
+      --secondary-light: #4bbde8;
+      --white: #ffffff;
+      --gray-50: #f8f9fa;
+      --gray-100: #f0f1f2;
+      --gray-200: #e2e4e7;
+      --gray-600: #6b7280;
+      --gray-700: #4b5563;
+      --gray-800: #1f2937;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.10);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.13);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray-800);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: 1.25rem; }
+    p { color: var(--gray-700); }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      background: rgba(22,160,215,0.10);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+      color: var(--gray-800);
+    }
+
+    .section-title span { color: var(--secondary); }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .text-center { text-align: center; }
+
+    /* ========== BUTTONS ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--gray-800);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(189,205,16,0.40);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--white);
+    }
+    .btn-secondary:hover {
+      background: var(--secondary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(22,160,215,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--secondary);
+    }
+    .btn-white:hover {
+      background: var(--gray-50);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow var(--transition);
+    }
+
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--gray-800);
+      flex-shrink: 0;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-text strong { font-size: 1.1rem; }
+    .logo-text span { font-size: 0.72rem; font-weight: 500; color: var(--gray-600); letter-spacing: 0.04em; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--gray-700);
+      transition: all var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+      background: rgba(22,160,215,0.08);
+    }
+
+    .nav-cta { margin-left: 12px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      background: none;
+      transition: background var(--transition);
+    }
+
+    .hamburger:hover { background: var(--gray-100); }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gray-700);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 16px 20px;
+      border-top: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 500;
+      color: var(--gray-700);
+      transition: all var(--transition);
+    }
+
+    .mobile-menu a:hover { background: var(--gray-100); color: var(--secondary); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding-top: 72px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(150deg, #f8f9fa 0%, #eef6fb 55%, #f0f8f0 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(189,205,16,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(22,160,215,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      color: var(--gray-800);
+      margin-bottom: 24px;
+    }
+
+    .hero-title .highlight {
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 100%; height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gray-800);
+      line-height: 1;
+    }
+
+    .stat-number span { color: var(--secondary); }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .hero-img img,
+    .hero-img .img-placeholder {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      background: #dde8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-placeholder {
+      background: linear-gradient(135deg, #dde8f0 0%, #c8d8e4 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #8fa8b8;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .img-placeholder svg { opacity: 0.5; }
+
+    .hero-float-card {
+      position: absolute;
+      bottom: -20px;
+      left: -30px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .float-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .float-text strong { display: block; font-size: 0.95rem; color: var(--gray-800); }
+    .float-text span { font-size: 0.78rem; color: var(--gray-600); }
+
+    .hero-float-card-2 {
+      position: absolute;
+      top: 30px;
+      right: -20px;
+      background: var(--secondary);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      animation: float 5s ease-in-out infinite reverse;
+    }
+
+    .float-icon-2 {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .float-text-2 { font-size: 0.82rem; font-weight: 600; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(-5deg); }
+
+    .service-icon-1 { background: rgba(189,205,16,0.15); }
+    .service-icon-2 { background: rgba(22,160,215,0.12); }
+    .service-icon-3 { background: rgba(189,205,16,0.10); }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      color: var(--gray-800);
+      font-size: 1.2rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--gray-700);
+      padding: 5px 0;
+    }
+
+    .service-features li::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      padding: 100px 0;
+      background: var(--gray-50);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(189,205,16,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-wrap { position: relative; }
+
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-img .img-placeholder { height: 460px; }
+
+    .about-accent {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 130px; height: 130px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition);
+    }
+
+    .value-item:hover { box-shadow: var(--shadow-md); }
+
+    .value-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      background: rgba(22,160,215,0.10);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .value-item strong {
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 3px;
+      color: var(--gray-800);
+    }
+
+    .value-item span {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    /* ========== ZONES ========== */
+    .zones {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .zones::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      pointer-events: none;
+    }
+
+    .zones::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    .zones .section-label {
+      background: rgba(255,255,255,0.18);
+      color: var(--white);
+    }
+
+    .zones .section-title { color: var(--white); }
+    .zones .section-title span { color: var(--primary); }
+    .zones .section-subtitle { color: rgba(255,255,255,0.80); }
+
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .zone-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      text-align: center;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .zone-card:hover {
+      background: rgba(255,255,255,0.20);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+
+    .zone-emoji {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .zone-card h3 {
+      color: var(--white);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .zone-card p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+    }
+
+    .zone-badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--primary);
+      color: var(--gray-800);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 50px;
+    }
+
+    .zones-note {
+      text-align: center;
+      margin-top: 40px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.92rem;
+    }
+
+    .zones-note a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+      transition: all var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      background: var(--white);
+    }
+
+    .quote-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+      opacity: 0.7;
+    }
+
+    .testimonial-text {
+      font-size: 0.97rem;
+      color: var(--gray-700);
+      font-style: italic;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .avatar-1 { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--gray-800); }
+    .avatar-2 { background: linear-gradient(135deg, var(--secondary), var(--secondary-dark)); }
+    .avatar-3 { background: linear-gradient(135deg, #e8a030, #c8821a); }
+
+    .author-info strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--gray-800);
+      margin-bottom: 2px;
+    }
+
+    .author-info span {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+    }
+
+    .stars {
+      color: #f5a623;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact {
+      padding: 100px 0;
+      background: var(--gray-50);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info > p {
+      color: var(--gray-600);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition);
+    }
+
+    .contact-item:hover { box-shadow: var(--shadow-md); }
+
     .contact-item-icon {
       width: 46px; height: 46px;
       border-radius: 12px;
@@ -166,7 +1064,7 @@
     }
 
     .footer-col ul a::before {
-      content: '›';
+      content: 'â€º';
       color: var(--primary);
       font-size: 1.1rem;
       line-height: 1;
@@ -382,18 +1280,18 @@
 <header class="navbar" id="navbar">
   <div class="container">
     <nav class="navbar-inner">
-      <a href="#" class="logo" aria-label="ABE - Aide & Bien Être">
+      <a href="#" class="logo" aria-label="ABE - Aide & Bien ÃŠtre">
         <div class="logo-badge">ABE</div>
         <div class="logo-text">
-          <strong>Aide & Bien Être</strong>
-          <span>Services à domicile</span>
+          <strong>Aide & Bien ÃŠtre</strong>
+          <span>Services Ã  domicile</span>
         </div>
       </a>
 
       <ul class="nav-links">
         <li><a href="#services">Nos services</a></li>
         <li><a href="#zones">Zones</a></li>
-        <li><a href="#temoignages">Témoignages</a></li>
+        <li><a href="#temoignages">TÃ©moignages</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -407,7 +1305,7 @@
     <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
       <a href="#services">Nos services</a>
       <a href="#zones">Zones d'intervention</a>
-      <a href="#temoignages">Témoignages</a>
+      <a href="#temoignages">TÃ©moignages</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="btn btn-secondary">Nous contacter</a>
     </div>
@@ -421,16 +1319,16 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Service agréé · Vénissieux & Saint-Fons
+          Service agrÃ©Ã© Â· VÃ©nissieux & Saint-Fons
         </div>
         <h1 class="hero-title">
           Bien vivre chez soi,<br>
-          <span class="highlight">près de chez vous</span>
+          <span class="highlight">prÃ¨s de chez vous</span>
         </h1>
         <p class="hero-subtitle">
-          Accompagnement bienveillant des personnes âgées et en perte d'autonomie.
-          Nos auxiliaires de vie qualifiés interviennent à domicile pour préserver
-          votre indépendance et votre qualité de vie.
+          Accompagnement bienveillant des personnes Ã¢gÃ©es et en perte d'autonomie.
+          Nos auxiliaires de vie qualifiÃ©s interviennent Ã  domicile pour prÃ©server
+          votre indÃ©pendance et votre qualitÃ© de vie.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-secondary">
@@ -438,18 +1336,18 @@
             Nous contacter
           </a>
           <a href="#services" class="btn btn-outline">
-            Découvrir nos services
+            DÃ©couvrir nos services
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-number">+<span>200</span></span>
-            <span class="stat-label">Familles accompagnées</span>
+            <span class="stat-label">Familles accompagnÃ©es</span>
           </div>
           <div class="stat">
             <span class="stat-number"><span>10</span>+</span>
-            <span class="stat-label">Années d'expérience</span>
+            <span class="stat-label">AnnÃ©es d'expÃ©rience</span>
           </div>
           <div class="stat">
             <span class="stat-number"><span>98</span>%</span>
@@ -460,7 +1358,7 @@
 
       <div class="hero-image-wrap">
         <div class="hero-img">
-          <img src="hero.jpg" alt="Aide à domicile - auxiliaire de vie avec une personne âgée" loading="eager"
+          <img src="hero.jpg" alt="Aide Ã  domicile - auxiliaire de vie avec une personne Ã¢gÃ©e" loading="eager"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                style="width:100%; height:480px; object-fit:cover;" />
           <div class="img-placeholder" style="display:none; height:480px;">
@@ -469,15 +1367,15 @@
           </div>
         </div>
         <div class="hero-float-card">
-          <div class="float-icon">🏠</div>
+          <div class="float-icon">ðŸ </div>
           <div class="float-text">
-            <strong>Intervention à domicile</strong>
+            <strong>Intervention Ã  domicile</strong>
             <span>7 jours sur 7 disponible</span>
           </div>
         </div>
         <div class="hero-float-card-2">
-          <div class="float-icon-2">✓</div>
-          <div class="float-text-2">Service agréé & qualifié</div>
+          <div class="float-icon-2">âœ“</div>
+          <div class="float-text-2">Service agrÃ©Ã© & qualifiÃ©</div>
         </div>
       </div>
     </div>
@@ -489,23 +1387,23 @@
   <div class="container">
     <div class="text-center">
       <span class="section-label reveal">Ce que nous faisons</span>
-      <h2 class="section-title reveal">Nos <span>services</span> à votre écoute</h2>
+      <h2 class="section-title reveal">Nos <span>services</span> Ã  votre Ã©coute</h2>
       <p class="section-subtitle reveal">
-        Des prestations adaptées à chaque situation, réalisées par des professionnels
-        formés et bienveillants, pour maintenir votre autonomie.
+        Des prestations adaptÃ©es Ã  chaque situation, rÃ©alisÃ©es par des professionnels
+        formÃ©s et bienveillants, pour maintenir votre autonomie.
       </p>
     </div>
 
     <div class="services-grid">
       <!-- Service 1 -->
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon service-icon-1">🧹</div>
-        <h3>Ménage & entretien</h3>
-        <p>Nous prenons soin de votre intérieur pour que vous puissiez évoluer dans un cadre propre, sain et confortable au quotidien.</p>
+        <div class="service-icon service-icon-1">ðŸ§¹</div>
+        <h3>MÃ©nage & entretien</h3>
+        <p>Nous prenons soin de votre intÃ©rieur pour que vous puissiez Ã©voluer dans un cadre propre, sain et confortable au quotidien.</p>
         <ul class="service-features">
-          <li>Nettoyage et dépoussiérage</li>
+          <li>Nettoyage et dÃ©poussiÃ©rage</li>
           <li>Entretien du linge et repassage</li>
-          <li>Courses et préparation des repas</li>
+          <li>Courses et prÃ©paration des repas</li>
           <li>Rangement et organisation</li>
         </ul>
         <a href="#contact" class="btn btn-outline">En savoir plus</a>
@@ -513,28 +1411,28 @@
 
       <!-- Service 2 -->
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon service-icon-2">🤝</div>
-        <h3>Aide à la personne & autonomie</h3>
-        <p>Nos auxiliaires de vie qualifiés vous accompagnent dans les actes essentiels du quotidien avec respect et professionnalisme.</p>
+        <div class="service-icon service-icon-2">ðŸ¤</div>
+        <h3>Aide Ã  la personne & autonomie</h3>
+        <p>Nos auxiliaires de vie qualifiÃ©s vous accompagnent dans les actes essentiels du quotidien avec respect et professionnalisme.</p>
         <ul class="service-features">
-          <li>Aide à la toilette et habillage</li>
-          <li>Aide aux transferts et mobilité</li>
-          <li>Prise des médicaments</li>
-          <li>Accompagnement médical</li>
+          <li>Aide Ã  la toilette et habillage</li>
+          <li>Aide aux transferts et mobilitÃ©</li>
+          <li>Prise des mÃ©dicaments</li>
+          <li>Accompagnement mÃ©dical</li>
         </ul>
         <a href="#contact" class="btn btn-outline">En savoir plus</a>
       </div>
 
       <!-- Service 3 -->
       <div class="service-card reveal reveal-delay-3">
-        <div class="service-icon service-icon-3">💬</div>
-        <h3>Présence & vie sociale</h3>
-        <p>Lutter contre l'isolement est essentiel. Nous offrons une présence humaine chaleureuse et des activités stimulantes adaptées.</p>
+        <div class="service-icon service-icon-3">ðŸ’¬</div>
+        <h3>PrÃ©sence & vie sociale</h3>
+        <p>Lutter contre l'isolement est essentiel. Nous offrons une prÃ©sence humaine chaleureuse et des activitÃ©s stimulantes adaptÃ©es.</p>
         <ul class="service-features">
-          <li>Compagnie et écoute</li>
+          <li>Compagnie et Ã©coute</li>
           <li>Sorties et promenades</li>
-          <li>Activités et loisirs</li>
-          <li>Aide aux démarches administratives</li>
+          <li>ActivitÃ©s et loisirs</li>
+          <li>Aide aux dÃ©marches administratives</li>
         </ul>
         <a href="#contact" class="btn btn-outline">En savoir plus</a>
       </div>
@@ -548,7 +1446,7 @@
     <div class="about-inner">
       <div class="about-image-wrap reveal-left">
         <div class="about-img">
-          <img src="equipe.jpg" alt="L'équipe ABE - Aide & Bien Être"
+          <img src="equipe.jpg" alt="L'Ã©quipe ABE - Aide & Bien ÃŠtre"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                style="width:100%; height:460px; object-fit:cover;" />
           <div class="img-placeholder" style="display:none; height:460px;">
@@ -556,51 +1454,51 @@
             <span>equipe.jpg</span>
           </div>
         </div>
-        <div class="about-accent">💛</div>
+        <div class="about-accent">ðŸ’›</div>
       </div>
 
       <div class="about-content reveal-right">
         <span class="section-label">Notre histoire</span>
-        <h2 class="section-title">Une équipe <span>humaine</span> à vos côtés</h2>
+        <h2 class="section-title">Une Ã©quipe <span>humaine</span> Ã  vos cÃ´tÃ©s</h2>
         <p style="margin-bottom:16px;">
-          Fondée avec une conviction profonde : chaque personne mérite de vieillir
-          dans la dignité et le confort de son foyer. Chez <strong>Aide & Bien Être</strong>,
-          nous plaçons l'humain au cœur de chaque intervention.
+          FondÃ©e avec une conviction profonde : chaque personne mÃ©rite de vieillir
+          dans la dignitÃ© et le confort de son foyer. Chez <strong>Aide & Bien ÃŠtre</strong>,
+          nous plaÃ§ons l'humain au cÅ“ur de chaque intervention.
         </p>
         <p style="margin-bottom:28px;">
-          Nos intervenants sont soigneusement sélectionnés, formés et accompagnés
-          pour offrir un service de qualité, avec la chaleur et la patience que
-          méritent nos aînés. Parce que derrière chaque mission, il y a une personne,
-          une famille, une confiance accordée.
+          Nos intervenants sont soigneusement sÃ©lectionnÃ©s, formÃ©s et accompagnÃ©s
+          pour offrir un service de qualitÃ©, avec la chaleur et la patience que
+          mÃ©ritent nos aÃ®nÃ©s. Parce que derriÃ¨re chaque mission, il y a une personne,
+          une famille, une confiance accordÃ©e.
         </p>
 
         <div class="about-values">
           <div class="value-item">
-            <div class="value-icon">❤️</div>
+            <div class="value-icon">â¤ï¸</div>
             <div>
               <strong>Bienveillance</strong>
               <span>Un accompagnement chaleureux et respectueux</span>
             </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">⭐</div>
+            <div class="value-icon">â­</div>
             <div>
-              <strong>Qualité</strong>
-              <span>Intervenants formés et certifiés</span>
+              <strong>QualitÃ©</strong>
+              <span>Intervenants formÃ©s et certifiÃ©s</span>
             </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🛡️</div>
+            <div class="value-icon">ðŸ›¡ï¸</div>
             <div>
               <strong>Confiance</strong>
-              <span>Service agréé et assuré</span>
+              <span>Service agrÃ©Ã© et assurÃ©</span>
             </div>
           </div>
           <div class="value-item">
-            <div class="value-icon">🔄</div>
+            <div class="value-icon">ðŸ”„</div>
             <div>
-              <strong>Flexibilité</strong>
-              <span>Adapté à vos besoins et horaires</span>
+              <strong>FlexibilitÃ©</strong>
+              <span>AdaptÃ© Ã  vos besoins et horaires</span>
             </div>
           </div>
         </div>
@@ -614,31 +1512,31 @@
   <div class="container">
     <div class="text-center">
       <span class="section-label reveal">Intervention locale</span>
-      <h2 class="section-title reveal">Nous intervenons à <span>Vénissieux</span> et <span>Saint-Fons</span></h2>
+      <h2 class="section-title reveal">Nous intervenons Ã  <span>VÃ©nissieux</span> et <span>Saint-Fons</span></h2>
       <p class="section-subtitle reveal">
         Proches de vous, nous connaissons votre territoire et ses habitants.
-        Notre équipe locale garantit réactivité et proximité.
+        Notre Ã©quipe locale garantit rÃ©activitÃ© et proximitÃ©.
       </p>
     </div>
 
     <div class="zones-grid">
       <div class="zone-card reveal reveal-delay-1">
-        <span class="zone-emoji">🏙️</span>
-        <h3>Vénissieux</h3>
-        <p>Tous les quartiers de la commune, du centre-ville aux zones résidentielles.</p>
+        <span class="zone-emoji">ðŸ™ï¸</span>
+        <h3>VÃ©nissieux</h3>
+        <p>Tous les quartiers de la commune, du centre-ville aux zones rÃ©sidentielles.</p>
         <span class="zone-badge">Zone couverte</span>
       </div>
       <div class="zone-card reveal reveal-delay-2">
-        <span class="zone-emoji">🌇</span>
+        <span class="zone-emoji">ðŸŒ‡</span>
         <h3>Saint-Fons</h3>
-        <p>Intervention sur l'ensemble de la commune et ses environs immédiats.</p>
+        <p>Intervention sur l'ensemble de la commune et ses environs immÃ©diats.</p>
         <span class="zone-badge">Zone couverte</span>
       </div>
     </div>
 
     <p class="zones-note reveal">
       Vous ne trouvez pas votre commune ?
-      <a href="#contact">Contactez-nous</a>, nous étudions chaque demande.
+      <a href="#contact">Contactez-nous</a>, nous Ã©tudions chaque demande.
     </p>
   </div>
 </section>
@@ -650,7 +1548,7 @@
       <span class="section-label reveal">Ils nous font confiance</span>
       <h2 class="section-title reveal">Ce que disent nos <span>familles</span></h2>
       <p class="section-subtitle reveal">
-        La satisfaction de nos bénéficiaires et de leurs proches est notre plus belle récompense.
+        La satisfaction de nos bÃ©nÃ©ficiaires et de leurs proches est notre plus belle rÃ©compense.
       </p>
     </div>
 
@@ -658,52 +1556,52 @@
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="quote-icon">&ldquo;</div>
         <p class="testimonial-text">
-          Depuis qu'ABE intervient chez ma mère, je me sens enfin sereine. Les auxiliaires sont
-          ponctuels, attentionnés et ma maman adore les voir arriver. Un service qui mérite vraiment
-          cinq étoiles, je le recommande à toutes les familles.
+          Depuis qu'ABE intervient chez ma mÃ¨re, je me sens enfin sereine. Les auxiliaires sont
+          ponctuels, attentionnÃ©s et ma maman adore les voir arriver. Un service qui mÃ©rite vraiment
+          cinq Ã©toiles, je le recommande Ã  toutes les familles.
         </p>
         <div class="testimonial-author">
           <div class="author-avatar avatar-1">M</div>
           <div class="author-info">
             <strong>Martine D.</strong>
-            <span>Fille d'une bénéficiaire · Vénissieux</span>
+            <span>Fille d'une bÃ©nÃ©ficiaire Â· VÃ©nissieux</span>
           </div>
         </div>
-        <div class="stars" style="margin-top:14px;">★★★★★</div>
+        <div class="stars" style="margin-top:14px;">â˜…â˜…â˜…â˜…â˜…</div>
       </div>
 
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="quote-icon">&ldquo;</div>
         <p class="testimonial-text">
-          J'ai 78 ans et je vis seul depuis le décès de ma femme. Grâce à l'équipe d'ABE,
-          je ne me sens plus isolé. Ils font le ménage, m'accompagnent en sortie et discutent
+          J'ai 78 ans et je vis seul depuis le dÃ©cÃ¨s de ma femme. GrÃ¢ce Ã  l'Ã©quipe d'ABE,
+          je ne me sens plus isolÃ©. Ils font le mÃ©nage, m'accompagnent en sortie et discutent
           avec moi. Un vrai soutien humain au quotidien.
         </p>
         <div class="testimonial-author">
           <div class="author-avatar avatar-2">R</div>
           <div class="author-info">
             <strong>Roger T.</strong>
-            <span>Bénéficiaire · Saint-Fons</span>
+            <span>BÃ©nÃ©ficiaire Â· Saint-Fons</span>
           </div>
         </div>
-        <div class="stars" style="margin-top:14px;">★★★★★</div>
+        <div class="stars" style="margin-top:14px;">â˜…â˜…â˜…â˜…â˜…</div>
       </div>
 
       <div class="testimonial-card reveal reveal-delay-3">
         <div class="quote-icon">&ldquo;</div>
         <p class="testimonial-text">
-          Après la chute de mon père, nous avions besoin d'une aide rapide et fiable.
-          ABE a tout organisé en moins d'une semaine. La coordinatrice a été à notre écoute
-          et l'accompagnement est parfaitement adapté à ses besoins. Merci infiniment.
+          AprÃ¨s la chute de mon pÃ¨re, nous avions besoin d'une aide rapide et fiable.
+          ABE a tout organisÃ© en moins d'une semaine. La coordinatrice a Ã©tÃ© Ã  notre Ã©coute
+          et l'accompagnement est parfaitement adaptÃ© Ã  ses besoins. Merci infiniment.
         </p>
         <div class="testimonial-author">
           <div class="author-avatar avatar-3">S</div>
           <div class="author-info">
             <strong>Sophie L.</strong>
-            <span>Fille d'un bénéficiaire · Vénissieux</span>
+            <span>Fille d'un bÃ©nÃ©ficiaire Â· VÃ©nissieux</span>
           </div>
         </div>
-        <div class="stars" style="margin-top:14px;">★★★★★</div>
+        <div class="stars" style="margin-top:14px;">â˜…â˜…â˜…â˜…â˜…</div>
       </div>
     </div>
   </div>
@@ -715,40 +1613,40 @@
     <div class="contact-inner">
       <div class="contact-info reveal-left">
         <span class="section-label">Parlons-nous</span>
-        <h2 class="section-title">Prenez contact avec <span>notre équipe</span></h2>
+        <h2 class="section-title">Prenez contact avec <span>notre Ã©quipe</span></h2>
         <p>
-          Une question, un besoin, une situation d'urgence ? Nous sommes à votre
-          disposition pour vous conseiller et établir ensemble un plan d'aide
-          personnalisé, sans engagement.
+          Une question, un besoin, une situation d'urgence ? Nous sommes Ã  votre
+          disposition pour vous conseiller et Ã©tablir ensemble un plan d'aide
+          personnalisÃ©, sans engagement.
         </p>
 
         <div class="contact-items">
           <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-icon">ðŸ“ž</div>
             <div>
-              <strong>Téléphone</strong>
+              <strong>TÃ©lÃ©phone</strong>
               <span>04 XX XX XX XX</span>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-icon">âœ‰ï¸</div>
             <div>
               <strong>Email</strong>
               <span>contact@abe-services.fr</span>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-icon">ðŸ“</div>
             <div>
               <strong>Zones d'intervention</strong>
-              <span>Vénissieux · Saint-Fons</span>
+              <span>VÃ©nissieux Â· Saint-Fons</span>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-icon">ðŸ•</div>
             <div>
-              <strong>Disponibilité</strong>
-              <span>Lun – Sam · 8h00 – 19h00</span>
+              <strong>DisponibilitÃ©</strong>
+              <span>Lun â€“ Sam Â· 8h00 â€“ 19h00</span>
             </div>
           </div>
         </div>
@@ -763,13 +1661,13 @@
               <input type="text" id="nom" name="nom" placeholder="Dupont" required />
             </div>
             <div class="form-group">
-              <label for="prenom">Prénom <span style="color:var(--secondary)">*</span></label>
+              <label for="prenom">PrÃ©nom <span style="color:var(--secondary)">*</span></label>
               <input type="text" id="prenom" name="prenom" placeholder="Marie" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="telephone">Téléphone <span style="color:var(--secondary)">*</span></label>
+              <label for="telephone">TÃ©lÃ©phone <span style="color:var(--secondary)">*</span></label>
               <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" required />
             </div>
             <div class="form-group">
@@ -778,30 +1676,30 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="service">Service souhaité</label>
+            <label for="service">Service souhaitÃ©</label>
             <select id="service" name="service">
-              <option value="">— Choisissez un service —</option>
-              <option>Ménage & entretien</option>
-              <option>Aide à la personne & autonomie</option>
-              <option>Présence & vie sociale</option>
+              <option value="">â€” Choisissez un service â€”</option>
+              <option>MÃ©nage & entretien</option>
+              <option>Aide Ã  la personne & autonomie</option>
+              <option>PrÃ©sence & vie sociale</option>
               <option>Autre / renseignements</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Votre message <span style="color:var(--secondary)">*</span></label>
-            <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation ou votre besoin…" required></textarea>
+            <textarea id="message" name="message" placeholder="DÃ©crivez briÃ¨vement votre situation ou votre besoinâ€¦" required></textarea>
           </div>
           <button type="submit" class="btn btn-secondary form-submit">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Envoyer ma demande
           </button>
-          <p class="form-note">🔒 Vos données sont confidentielles et ne seront jamais partagées.</p>
+          <p class="form-note">ðŸ”’ Vos donnÃ©es sont confidentielles et ne seront jamais partagÃ©es.</p>
         </form>
 
         <div class="form-success" id="form-success">
-          <div class="success-icon">✅</div>
-          <h3>Message envoyé !</h3>
-          <p>Merci pour votre message. Notre équipe vous contactera dans les plus brefs délais, généralement sous 24h.</p>
+          <div class="success-icon">âœ…</div>
+          <h3>Message envoyÃ© !</h3>
+          <p>Merci pour votre message. Notre Ã©quipe vous contactera dans les plus brefs dÃ©lais, gÃ©nÃ©ralement sous 24h.</p>
         </div>
       </div>
     </div>
@@ -813,15 +1711,15 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo" aria-label="ABE - Aide & Bien Être">
+        <a href="#" class="logo" aria-label="ABE - Aide & Bien ÃŠtre">
           <div class="logo-badge">ABE</div>
           <div class="logo-text">
-            <strong>Aide & Bien Être</strong>
-            <span>Services à domicile</span>
+            <strong>Aide & Bien ÃŠtre</strong>
+            <span>Services Ã  domicile</span>
           </div>
         </a>
         <p>
-          Votre partenaire de confiance pour l'aide à domicile à Vénissieux et Saint-Fons.
+          Votre partenaire de confiance pour l'aide Ã  domicile Ã  VÃ©nissieux et Saint-Fons.
           Parce que bien vivre chez soi, c'est un droit.
         </p>
         <div class="footer-social">
@@ -836,19 +1734,19 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="#services">Ménage & entretien</a></li>
-          <li><a href="#services">Aide à la personne</a></li>
-          <li><a href="#services">Présence sociale</a></li>
-          <li><a href="#contact">Demande personnalisée</a></li>
+          <li><a href="#services">MÃ©nage & entretien</a></li>
+          <li><a href="#services">Aide Ã  la personne</a></li>
+          <li><a href="#services">PrÃ©sence sociale</a></li>
+          <li><a href="#contact">Demande personnalisÃ©e</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Informations</h4>
         <ul>
-          <li><a href="#about">À propos</a></li>
+          <li><a href="#about">Ã€ propos</a></li>
           <li><a href="#zones">Zones d'intervention</a></li>
-          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#temoignages">TÃ©moignages</a></li>
           <li><a href="#contact">Recrutement</a></li>
         </ul>
       </div>
@@ -856,15 +1754,15 @@
       <div class="footer-col">
         <h4>Nous appeler</h4>
         <div class="footer-phone">
-          <div class="footer-phone-icon">📞</div>
+          <div class="footer-phone-icon">ðŸ“ž</div>
           <div>
             <strong>04 XX XX XX XX</strong>
             <span>Appel gratuit</span>
           </div>
         </div>
         <p class="footer-hours">
-          Lundi – Vendredi : 8h – 19h<br>
-          Samedi : 9h – 17h<br>
+          Lundi â€“ Vendredi : 8h â€“ 19h<br>
+          Samedi : 9h â€“ 17h<br>
           Urgences : 7j/7
         </p>
       </div>
@@ -873,10 +1771,10 @@
     <hr class="footer-divider" />
 
     <div class="footer-bottom">
-      <p>© 2025 ABE - Aide & Bien Être. Tous droits réservés.</p>
+      <p>Â© 2025 ABE - Aide & Bien ÃŠtre. Tous droits rÃ©servÃ©s.</p>
       <div class="footer-bottom-links">
-        <a href="#">Mentions légales</a>
-        <a href="#">Politique de confidentialité</a>
+        <a href="#">Mentions lÃ©gales</a>
+        <a href="#">Politique de confidentialitÃ©</a>
         <a href="#">CGU</a>
       </div>
     </div>
@@ -884,7 +1782,7 @@
 </footer>
 
 <!-- ========== SCROLL TO TOP ========== -->
-<button class="scroll-top" id="scroll-top" aria-label="Retour en haut">↑</button>
+<button class="scroll-top" id="scroll-top" aria-label="Retour en haut">â†‘</button>
 
 <!-- ========== JAVASCRIPT ========== -->
 <script>
@@ -993,7 +1891,7 @@
     }
 
     const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Envoi en cours…';
+    btn.textContent = 'Envoi en coursâ€¦';
     btn.disabled = true;
 
     // Simulate sending (replace with real fetch/AJAX)

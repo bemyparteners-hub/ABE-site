@@ -1,0 +1,1049 @@
+    .contact-item-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .contact-item span {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--gray-800);
+      background: var(--white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(22,160,215,0.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray-600); opacity: 0.7; }
+
+    .form-submit { width: 100%; justify-content: center; padding: 15px; font-size: 1.05rem; border-radius: var(--radius-sm); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-top: 14px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--gray-800);
+      color: var(--white);
+      padding: 64px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
+    }
+
+    .footer-brand .logo { color: var(--white); margin-bottom: 16px; }
+    .footer-brand .logo-badge { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); }
+    .footer-brand .logo-text span { color: rgba(255,255,255,0.5); }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.60);
+      font-size: 0.92rem;
+      max-width: 260px;
+      line-height: 1.7;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col ul a {
+      color: rgba(255,255,255,0.60);
+      font-size: 0.92rem;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-col ul a::before {
+      content: '›';
+      color: var(--primary);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .footer-phone-icon {
+      width: 36px; height: 36px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .footer-phone strong {
+      display: block;
+      color: var(--white);
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-phone span {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+    }
+
+    .footer-hours {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      margin-bottom: 24px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+      transition: color var(--transition);
+    }
+
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* ========== SCROLL ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ========== SUCCESS STATE ========== */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+
+    .form-success.show { display: block; }
+
+    .success-icon {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: rgba(189,205,16,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+
+    .form-success h3 { margin-bottom: 10px; color: var(--gray-800); }
+    .form-success p { color: var(--gray-600); font-size: 0.95rem; }
+
+    /* ========== SCROLL TO TOP ========== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--transition);
+      z-index: 999;
+      font-size: 1.2rem;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .scroll-top:hover {
+      background: var(--secondary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-inner { gap: 40px; }
+    }
+
+    @media (max-width: 900px) {
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap { order: -1; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image-wrap { display: none; }
+      .hero { min-height: auto; padding-top: 100px; }
+      .hero-inner { padding: 60px 0 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .zones-grid { grid-template-columns: 1fr; max-width: 360px; }
+      .about-values { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 28px 22px; }
+      .hero-stats { gap: 20px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .services, .about, .zones, .testimonials, .contact { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <nav class="navbar-inner">
+      <a href="#" class="logo" aria-label="ABE - Aide & Bien Être">
+        <div class="logo-badge">ABE</div>
+        <div class="logo-text">
+          <strong>Aide & Bien Être</strong>
+          <span>Services à domicile</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Nos services</a></li>
+        <li><a href="#zones">Zones</a></li>
+        <li><a href="#temoignages">Témoignages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn-secondary nav-cta">Nous contacter</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+      <a href="#services">Nos services</a>
+      <a href="#zones">Zones d'intervention</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-secondary">Nous contacter</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="accueil">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Service agréé · Vénissieux & Saint-Fons
+        </div>
+        <h1 class="hero-title">
+          Bien vivre chez soi,<br>
+          <span class="highlight">près de chez vous</span>
+        </h1>
+        <p class="hero-subtitle">
+          Accompagnement bienveillant des personnes âgées et en perte d'autonomie.
+          Nos auxiliaires de vie qualifiés interviennent à domicile pour préserver
+          votre indépendance et votre qualité de vie.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Nous contacter
+          </a>
+          <a href="#services" class="btn btn-outline">
+            Découvrir nos services
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">+<span>200</span></span>
+            <span class="stat-label">Familles accompagnées</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number"><span>10</span>+</span>
+            <span class="stat-label">Années d'expérience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number"><span>98</span>%</span>
+            <span class="stat-label">Clients satisfaits</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="hero-img">
+          <img src="hero.jpg" alt="Aide à domicile - auxiliaire de vie avec une personne âgée" loading="eager"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+               style="width:100%; height:480px; object-fit:cover;" />
+          <div class="img-placeholder" style="display:none; height:480px;">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>hero.jpg</span>
+          </div>
+        </div>
+        <div class="hero-float-card">
+          <div class="float-icon">🏠</div>
+          <div class="float-text">
+            <strong>Intervention à domicile</strong>
+            <span>7 jours sur 7 disponible</span>
+          </div>
+        </div>
+        <div class="hero-float-card-2">
+          <div class="float-icon-2">✓</div>
+          <div class="float-text-2">Service agréé & qualifié</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label reveal">Ce que nous faisons</span>
+      <h2 class="section-title reveal">Nos <span>services</span> à votre écoute</h2>
+      <p class="section-subtitle reveal">
+        Des prestations adaptées à chaque situation, réalisées par des professionnels
+        formés et bienveillants, pour maintenir votre autonomie.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon service-icon-1">🧹</div>
+        <h3>Ménage & entretien</h3>
+        <p>Nous prenons soin de votre intérieur pour que vous puissiez évoluer dans un cadre propre, sain et confortable au quotidien.</p>
+        <ul class="service-features">
+          <li>Nettoyage et dépoussiérage</li>
+          <li>Entretien du linge et repassage</li>
+          <li>Courses et préparation des repas</li>
+          <li>Rangement et organisation</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">En savoir plus</a>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon service-icon-2">🤝</div>
+        <h3>Aide à la personne & autonomie</h3>
+        <p>Nos auxiliaires de vie qualifiés vous accompagnent dans les actes essentiels du quotidien avec respect et professionnalisme.</p>
+        <ul class="service-features">
+          <li>Aide à la toilette et habillage</li>
+          <li>Aide aux transferts et mobilité</li>
+          <li>Prise des médicaments</li>
+          <li>Accompagnement médical</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">En savoir plus</a>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon service-icon-3">💬</div>
+        <h3>Présence & vie sociale</h3>
+        <p>Lutter contre l'isolement est essentiel. Nous offrons une présence humaine chaleureuse et des activités stimulantes adaptées.</p>
+        <ul class="service-features">
+          <li>Compagnie et écoute</li>
+          <li>Sorties et promenades</li>
+          <li>Activités et loisirs</li>
+          <li>Aide aux démarches administratives</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-image-wrap reveal-left">
+        <div class="about-img">
+          <img src="equipe.jpg" alt="L'équipe ABE - Aide & Bien Être"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+               style="width:100%; height:460px; object-fit:cover;" />
+          <div class="img-placeholder" style="display:none; height:460px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>equipe.jpg</span>
+          </div>
+        </div>
+        <div class="about-accent">💛</div>
+      </div>
+
+      <div class="about-content reveal-right">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">Une équipe <span>humaine</span> à vos côtés</h2>
+        <p style="margin-bottom:16px;">
+          Fondée avec une conviction profonde : chaque personne mérite de vieillir
+          dans la dignité et le confort de son foyer. Chez <strong>Aide & Bien Être</strong>,
+          nous plaçons l'humain au cœur de chaque intervention.
+        </p>
+        <p style="margin-bottom:28px;">
+          Nos intervenants sont soigneusement sélectionnés, formés et accompagnés
+          pour offrir un service de qualité, avec la chaleur et la patience que
+          méritent nos aînés. Parce que derrière chaque mission, il y a une personne,
+          une famille, une confiance accordée.
+        </p>
+
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon">❤️</div>
+            <div>
+              <strong>Bienveillance</strong>
+              <span>Un accompagnement chaleureux et respectueux</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">⭐</div>
+            <div>
+              <strong>Qualité</strong>
+              <span>Intervenants formés et certifiés</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🛡️</div>
+            <div>
+              <strong>Confiance</strong>
+              <span>Service agréé et assuré</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🔄</div>
+            <div>
+              <strong>Flexibilité</strong>
+              <span>Adapté à vos besoins et horaires</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ZONES ========== -->
+<section class="zones" id="zones">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label reveal">Intervention locale</span>
+      <h2 class="section-title reveal">Nous intervenons à <span>Vénissieux</span> et <span>Saint-Fons</span></h2>
+      <p class="section-subtitle reveal">
+        Proches de vous, nous connaissons votre territoire et ses habitants.
+        Notre équipe locale garantit réactivité et proximité.
+      </p>
+    </div>
+
+    <div class="zones-grid">
+      <div class="zone-card reveal reveal-delay-1">
+        <span class="zone-emoji">🏙️</span>
+        <h3>Vénissieux</h3>
+        <p>Tous les quartiers de la commune, du centre-ville aux zones résidentielles.</p>
+        <span class="zone-badge">Zone couverte</span>
+      </div>
+      <div class="zone-card reveal reveal-delay-2">
+        <span class="zone-emoji">🌇</span>
+        <h3>Saint-Fons</h3>
+        <p>Intervention sur l'ensemble de la commune et ses environs immédiats.</p>
+        <span class="zone-badge">Zone couverte</span>
+      </div>
+    </div>
+
+    <p class="zones-note reveal">
+      Vous ne trouvez pas votre commune ?
+      <a href="#contact">Contactez-nous</a>, nous étudions chaque demande.
+    </p>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials" id="temoignages">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label reveal">Ils nous font confiance</span>
+      <h2 class="section-title reveal">Ce que disent nos <span>familles</span></h2>
+      <p class="section-subtitle reveal">
+        La satisfaction de nos bénéficiaires et de leurs proches est notre plus belle récompense.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="quote-icon">&ldquo;</div>
+        <p class="testimonial-text">
+          Depuis qu'ABE intervient chez ma mère, je me sens enfin sereine. Les auxiliaires sont
+          ponctuels, attentionnés et ma maman adore les voir arriver. Un service qui mérite vraiment
+          cinq étoiles, je le recommande à toutes les familles.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar avatar-1">M</div>
+          <div class="author-info">
+            <strong>Martine D.</strong>
+            <span>Fille d'une bénéficiaire · Vénissieux</span>
+          </div>
+        </div>
+        <div class="stars" style="margin-top:14px;">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="quote-icon">&ldquo;</div>
+        <p class="testimonial-text">
+          J'ai 78 ans et je vis seul depuis le décès de ma femme. Grâce à l'équipe d'ABE,
+          je ne me sens plus isolé. Ils font le ménage, m'accompagnent en sortie et discutent
+          avec moi. Un vrai soutien humain au quotidien.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar avatar-2">R</div>
+          <div class="author-info">
+            <strong>Roger T.</strong>
+            <span>Bénéficiaire · Saint-Fons</span>
+          </div>
+        </div>
+        <div class="stars" style="margin-top:14px;">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="quote-icon">&ldquo;</div>
+        <p class="testimonial-text">
+          Après la chute de mon père, nous avions besoin d'une aide rapide et fiable.
+          ABE a tout organisé en moins d'une semaine. La coordinatrice a été à notre écoute
+          et l'accompagnement est parfaitement adapté à ses besoins. Merci infiniment.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar avatar-3">S</div>
+          <div class="author-info">
+            <strong>Sophie L.</strong>
+            <span>Fille d'un bénéficiaire · Vénissieux</span>
+          </div>
+        </div>
+        <div class="stars" style="margin-top:14px;">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Parlons-nous</span>
+        <h2 class="section-title">Prenez contact avec <span>notre équipe</span></h2>
+        <p>
+          Une question, un besoin, une situation d'urgence ? Nous sommes à votre
+          disposition pour vous conseiller et établir ensemble un plan d'aide
+          personnalisé, sans engagement.
+        </p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <strong>Téléphone</strong>
+              <span>04 XX XX XX XX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <span>contact@abe-services.fr</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <strong>Zones d'intervention</strong>
+              <span>Vénissieux · Saint-Fons</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <strong>Disponibilité</strong>
+              <span>Lun – Sam · 8h00 – 19h00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal-right">
+        <p class="form-title">Envoyez-nous un message</p>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom <span style="color:var(--secondary)">*</span></label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prénom <span style="color:var(--secondary)">*</span></label>
+              <input type="text" id="prenom" name="prenom" placeholder="Marie" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telephone">Téléphone <span style="color:var(--secondary)">*</span></label>
+              <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="marie@exemple.fr" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service souhaité</label>
+            <select id="service" name="service">
+              <option value="">— Choisissez un service —</option>
+              <option>Ménage & entretien</option>
+              <option>Aide à la personne & autonomie</option>
+              <option>Présence & vie sociale</option>
+              <option>Autre / renseignements</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Votre message <span style="color:var(--secondary)">*</span></label>
+            <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation ou votre besoin…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-secondary form-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Envoyer ma demande
+          </button>
+          <p class="form-note">🔒 Vos données sont confidentielles et ne seront jamais partagées.</p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <div class="success-icon">✅</div>
+          <h3>Message envoyé !</h3>
+          <p>Merci pour votre message. Notre équipe vous contactera dans les plus brefs délais, généralement sous 24h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="ABE - Aide & Bien Être">
+          <div class="logo-badge">ABE</div>
+          <div class="logo-text">
+            <strong>Aide & Bien Être</strong>
+            <span>Services à domicile</span>
+          </div>
+        </a>
+        <p>
+          Votre partenaire de confiance pour l'aide à domicile à Vénissieux et Saint-Fons.
+          Parce que bien vivre chez soi, c'est un droit.
+        </p>
+        <div class="footer-social">
+          <div class="social-btn" title="Facebook">f</div>
+          <div class="social-btn" title="LinkedIn">in</div>
+          <div class="social-btn" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Ménage & entretien</a></li>
+          <li><a href="#services">Aide à la personne</a></li>
+          <li><a href="#services">Présence sociale</a></li>
+          <li><a href="#contact">Demande personnalisée</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#zones">Zones d'intervention</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#contact">Recrutement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nous appeler</h4>
+        <div class="footer-phone">
+          <div class="footer-phone-icon">📞</div>
+          <div>
+            <strong>04 XX XX XX XX</strong>
+            <span>Appel gratuit</span>
+          </div>
+        </div>
+        <p class="footer-hours">
+          Lundi – Vendredi : 8h – 19h<br>
+          Samedi : 9h – 17h<br>
+          Urgences : 7j/7
+        </p>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-bottom">
+      <p>© 2025 ABE - Aide & Bien Être. Tous droits réservés.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== SCROLL TO TOP ========== -->
+<button class="scroll-top" id="scroll-top" aria-label="Retour en haut">↑</button>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // --- Navbar scroll effect ---
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scroll-top');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    navbar.classList.toggle('scrolled', scrollY > 20);
+    scrollTopBtn.classList.toggle('visible', scrollY > 400);
+  }, { passive: true });
+
+  // --- Mobile menu ---
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // --- Scroll to top ---
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // --- Scroll reveal animation ---
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // --- Counter animation ---
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const spans = entry.target.querySelectorAll('.stat-number span');
+        spans.forEach(span => {
+          const val = parseInt(span.textContent);
+          if (!isNaN(val)) animateCounter(span, val);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
+
+  // --- Contact form ---
+  const form = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+
+    required.forEach(field => {
+      field.style.borderColor = '';
+      if (!field.value.trim()) {
+        field.style.borderColor = '#e53e3e';
+        field.style.boxShadow = '0 0 0 3px rgba(229,62,62,0.12)';
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      form.querySelector('[required]:invalid, [required][style*="e53e3e"]')?.focus();
+      return;
+    }
+
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    // Simulate sending (replace with real fetch/AJAX)
+    setTimeout(() => {
+      form.style.display = 'none';
+      formSuccess.classList.add('show');
+    }, 1200);
+  });
+
+  // Remove red border on input
+  form.querySelectorAll('input, textarea, select').forEach(field => {
+    field.addEventListener('input', () => {
+      field.style.borderColor = '';
+      field.style.boxShadow = '';
+    });
+  });
+
+  // --- Smooth scroll for nav links ---
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // --- Navbar active link highlight ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.color = '';
+          link.style.background = '';
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.style.color = 'var(--secondary)';
+            link.style.background = 'rgba(22,160,215,0.08)';
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
